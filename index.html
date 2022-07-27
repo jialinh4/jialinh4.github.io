@@ -17,7 +17,7 @@
 <script>
 async function init() {
 
-var data = await d3.csv("https://flunky.github.io/cars2017.csv")
+var data = await d3.csv("https://data.world/covid-19-data-resource-hub/covid-19-case-counts/workspace/file?filename=COVID-19+Activity.csv")
 var x = d3.scaleLog().base(10).domain([10,150]).range([0,200])
 var y = d3.scaleLog().base(10).domain([10,150]).range([200,0])
 
@@ -26,9 +26,9 @@ d3.select("svg").append("g")
 .attr("transform","translate(50,50)")
 .selectAll("circle")
 .data(data).enter().append("circle")
-.attr("cx",function(d,i){return x(d.AverageCityMPG)})
-.attr("cy",function(d,i){return y(d.AverageHighwayMPG)})
-.attr("r",function(d,i){return 1*d.EngineCylinders+2})
+.attr("cx",function(d,i){return x(d.report_date)})
+.attr("cy",function(d,i){return y(d.people_positive_cases_count)})
+.attr("r",function(d,i){return 1*d.people_positive_new_cases_count+2})
 
 
 d3.select("svg").append("g")
