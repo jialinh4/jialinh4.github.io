@@ -19,7 +19,7 @@ async function init() {
 
 var data = await d3.csv("https://query.data.world/s/6w6axbyzcghctqj4tnbx6iwdybkg3x")
 var x = x = d3.scaleTime()  
-  .domain([new Date(2019,12,00), new Date (2022,12,31)])
+  .domain([new Date(2019,12,00), new Date(2022,12,31)])
   .range([0,200]);
 var y = d3.scaleLinear().domain([10,190000000]).range([200,0])
 
