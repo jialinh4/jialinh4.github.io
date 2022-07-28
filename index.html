@@ -69,7 +69,7 @@
           )
 
       // transitions
-      d3.transition().selectAll(".line")
+      d3.transition().selectAll("path")
       .duration(500)
       .delay(function(d, i) { return i * 500; })
       .ease("linear")
