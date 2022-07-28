@@ -67,6 +67,14 @@
           .x(function(d) { return x(d.date) })
           .y(function(d) { return y(d.value) })
           )
+
+      // transitions
+      d3.transition().selectAll(".line")
+      .duration(500)
+      .delay(function(d, i) { return i * 500; })
+      .ease("linear")
+      .attr("d", function(d){return line(d.values); })
+      .style("stroke", function(d) {return color(d.name); });
   
   })
   
