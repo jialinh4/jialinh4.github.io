@@ -61,6 +61,29 @@
   
   })
 
+  var data2 = d3.csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv",
+  
+    // When reading the csv, I must format variables:
+    function(d){
+      return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.deaths }
+    },
+  
+    // Now I can use this dataset:
+    function(data) {
+  
+      // Add the line
+      svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 1.5)
+        .attr("d", d3.line()
+          .x(function(d) { return x(d.date) })
+          .y(function(d) { return y(d.value) })
+          )
+  
+  })
+
   // Create a function that takes a dataset as input and update the plot:
   function update(data) {
 
