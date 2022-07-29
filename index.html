@@ -7,7 +7,7 @@
 <body>
 <h1>jialinh4's Narrative Visualization</h1>
 <p>CS 416 Final Project</p>
-<p>test 5</p>
+<p>test 4</p>
 
 
 </body>
@@ -40,59 +40,36 @@
     function(d){
       return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.cases }
     })
-
-// Initialise a X axis:
-var x = d3.scaleLinear().range([0,width]);
-var xAxis = d3.axisBottom().scale(x);
-svg.append("g")
-  .attr("transform", "translate(0," + height + ")")
-  .attr("class","myXaxis")
-
-// Initialize an Y axis
-var y = d3.scaleLinear().range([height, 0]);
-var yAxis = d3.axisLeft().scale(y);
-svg.append("g")
-  .attr("class","myYaxis")
-
-// Create a function that takes a dataset as input and update the plot:
-function update(data) {
-
-  // Create the X axis:
-  x.domain([0, d3.max(data, function(d) { return d.ser1 }) ]);
-  svg.selectAll(".myXaxis").transition()
-    .duration(3000)
-    .call(xAxis);
-
-  // create the Y axis
-  y.domain([0, d3.max(data, function(d) { return d.ser2  }) ]);
-  svg.selectAll(".myYaxis")
-    .transition()
-    .duration(3000)
-    .call(yAxis);
-
-  // Create a update selection: bind to the new data
-  var u = svg.selectAll(".lineTest")
-    .data([data], function(d){ return d.ser1 });
-
-  // Updata the line
-  u
-    .enter()
-    .append("path")
-    .attr("class","lineTest")
-    .merge(u)
-    .transition()
-    .duration(3000)
-    .attr("d", d3.line()
-      .x(function(d) { return x(d.ser1); })
-      .y(function(d) { return y(d.ser2); }))
-      .attr("fill", "none")
-      .attr("stroke", "steelblue")
-      .attr("stroke-width", 2.5)
-}
-
-// At the beginning, I run the update function on the first dataset:
-update(data1)
-
+  
+    // Now I can use this dataset:
+    
+  
+      // Add X axis --> it is a date format
+      var x = d3.scaleTime()
+        .domain(d3.extent(data, function(d) { return d.date; }))
+        .range([ 0, width ]);
+      svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+  
+      // Add Y axis
+      var y = d3.scaleLinear()
+        .domain([0, d3.max(data, function(d) { return + d.value; })])
+        .range([ height, 0 ]);
+      svg.append("g")
+        .call(d3.axisLeft(y));
+  
+      // Add the line
+      svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 1.5)
+        .attr("d", d3.line()
+          .x(function(d) { return x(d.date) })
+          .y(function(d) { return y(d.value) })
+          )
+  
   
 </script>
 </body>
