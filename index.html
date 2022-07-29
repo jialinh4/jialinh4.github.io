@@ -7,7 +7,7 @@
 <body>
 <h1>jialinh4's Narrative Visualization</h1>
 <p>CS 416 Final Project</p>
-<p>test 9</p>
+<p>test 1</p>
 
 
 </body>
@@ -95,8 +95,7 @@
       }
       var mousemove = function(d) {
         Tooltip
-          .html("Exact value: " + d.value)
-          .html("Exact date: " + d.date)
+          .html("Exact value: " + d.value + "; " + d.date)
           .style("left", (d3.mouse(this)[0]+70) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
       }
