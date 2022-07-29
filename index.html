@@ -7,7 +7,7 @@
 <body>
 <h1>jialinh4's Narrative Visualization</h1>
 <p>CS 416 Final Project</p>
-<p>test 6</p>
+<p>test 9</p>
 
 
 </body>
@@ -36,21 +36,16 @@
             "translate(" + margin.left + "," + margin.top + ")");
   
   //Read the data
+  var data1 = d3.csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv")
 
   // Create 2 datasets
-  var data1 = [
-    {ser1: 0.3, ser2: 4},
-    {ser1: 2, ser2: 16},
-    {ser1: 3, ser2: 8}
-  ];
-
   var data2 = [
    {ser1: 1, ser2: 7},
    {ser1: 4, ser2: 1},
    {ser1: 6, ser2: 8}];
 
   // Initialise a X axis:
-  var x = d3.scaleLinear().range([0,width]);
+  var x = d3.scaleTime().range([0,width]);
   var xAxis = d3.axisBottom().scale(x);
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
@@ -66,13 +61,13 @@
   function update(data) {
 
     // Create the X axis:
-    x.domain([0, d3.max(data, function(d) { return d.ser1 }) ]);
+    x.domain(d3.extent(data, function(d) { return d3.timeParse("%Y-%m-%d")(d.date); }))
     svg.selectAll(".myXaxis").transition()
       .duration(3000)
       .call(xAxis);
 
     // create the Y axis
-    y.domain([0, d3.max(data, function(d) { return d.ser2  }) ]);
+    y.domain([0, d3.max(data, function(d) { return + d.cases; })])
     svg.selectAll(".myYaxis")
       .transition()
       .duration(3000)
@@ -80,7 +75,7 @@
 
     // Create a update selection: bind to the new data
     var u = svg.selectAll(".lineTest")
-      .data([data], function(d){ return d.ser1 });
+      .data([data], function(d){ return d3.timeParse("%Y-%m-%d")(d.date) });
 
     // Updata the line
     u
@@ -91,8 +86,8 @@
       .transition()
       .duration(3000)
       .attr("d", d3.line()
-        .x(function(d) { return x(d.ser1); })
-        .y(function(d) { return y(d.ser2); }))
+        .x(function(d) { return x(d3.timeParse("%Y-%m-%d")(d.date)); })
+        .y(function(d) { return y(d.cases); }))
         .attr("fill", "none")
         .attr("stroke", "steelblue")
         .attr("stroke-width", 2.5)
