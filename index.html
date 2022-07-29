@@ -7,7 +7,7 @@
 <body>
 <h1>jialinh4's Narrative Visualization</h1>
 <p>CS 416 Final Project</p>
-<p>test 3</p>
+<p>test 2</p>
 
 
 </body>
@@ -47,22 +47,16 @@
       var x = d3.scaleTime()
         .domain(d3.extent(data, function(d) { return d.date; }))
         .range([ 0, width ]);
-
-      var xAxis = d3.axisBottom().scale(x);
-
       svg.append("g")
         .attr("transform", "translate(0," + height + ")")
-        .attr("class","myXaxis")
+        .call(d3.axisBottom(x));
   
       // Add Y axis
       var y = d3.scaleLinear()
         .domain([0, d3.max(data, function(d) { return + d.value; })])
         .range([ height, 0 ]);
-
-      var yAxis = d3.axisLeft().scale(y);
-
       svg.append("g")
-        .attr("class","myYaxis")
+        .call(d3.axisLeft(y));
   
       // Add the line
       svg.append("path")
