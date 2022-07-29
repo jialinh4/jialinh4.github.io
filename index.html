@@ -7,11 +7,15 @@
 <body>
 <h1>jialinh4's Narrative Visualization</h1>
 <p>CS 416 Final Project</p>
-<p>test 4</p>
+<p>test 9</p>
 
 
 </body>
 <script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Add 2 buttons -->
+<button onclick="update(data1)">Dataset 1</button>
+<button onclick="update(data2)">Dataset 2</button>
 
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
@@ -44,21 +48,6 @@
     // Now I can use this dataset:
     function(data) {
   
-      // Add X axis --> it is a date format
-      var x = d3.scaleTime()
-        .domain(d3.extent(data, function(d) { return d.date; }))
-        .range([ 0, width ]);
-      svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
-  
-      // Add Y axis
-      var y = d3.scaleLinear()
-        .domain([0, d3.max(data, function(d) { return + d.value; })])
-        .range([ height, 0 ]);
-      svg.append("g")
-        .call(d3.axisLeft(y));
-  
       // Add the line
       svg.append("path")
         .datum(data)
@@ -71,7 +60,48 @@
           )
   
   })
-  
+
+  // Create a function that takes a dataset as input and update the plot:
+  function update(data) {
+
+  // Add X axis --> it is a date format
+  var x = d3.scaleTime()
+        .domain(d3.extent(data, function(d) { return d.date; }))
+        .range([ 0, width ]);
+      svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+
+  // Add Y axis
+  var y = d3.scaleLinear()
+        .domain([0, d3.max(data, function(d) { return + d.value; })])
+        .range([ height, 0 ]);
+      svg.append("g")
+        .call(d3.axisLeft(y));
+
+  // Create a update selection: bind to the new data
+  var u = svg.selectAll(".lineTest")
+    .data([data], function(d){ return d.date });
+
+  // Updata the line
+  u
+    .enter()
+    .append("path")
+    .attr("class","lineTest")
+    .merge(u)
+    .transition()
+    .duration(3000)
+    .attr("d", d3.line()
+      .x(function(d) { return x(d.date); })
+      .y(function(d) { return y(d.value); }))
+      .attr("fill", "none")
+      .attr("stroke", "steelblue")
+      .attr("stroke-width", 2.5)
+  }
+
+  // At the beginning, I run the update function on the first dataset:
+  update(data1)
+    
 </script>
 </body>
 
