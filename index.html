@@ -7,7 +7,7 @@
 <body>
 <h1>jialinh4's Narrative Visualization</h1>
 <p>CS 416 Final Project</p>
-<p>test 4</p>
+<p>test 6</p>
 
 
 </body>
@@ -37,43 +37,12 @@
   
   //Read the data
 
-  var data1 = d3.csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv",
-  
-    // When reading the csv, I must format variables:
-    function(d){
-      return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.cases }
-    },
-  
-    // Now I can use this dataset:
-    function(data) {
-  
-      // Add X axis --> it is a date format
-      var x = d3.scaleTime()
-        .domain(d3.extent(data, function(d) { return d.date; }))
-        .range([ 0, width ]);
-      svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
-  
-      // Add Y axis
-      var y = d3.scaleLinear()
-        .domain([0, d3.max(data, function(d) { return + d.value; })])
-        .range([ height, 0 ]);
-      svg.append("g")
-        .call(d3.axisLeft(y));
-  
-      // Add the line
-      svg.append("path")
-        .datum(data)
-        .attr("fill", "none")
-        .attr("stroke", "steelblue")
-        .attr("stroke-width", 1.5)
-        .attr("d", d3.line()
-          .x(function(d) { return x(d.date) })
-          .y(function(d) { return y(d.value) })
-          )
-  
-  })
+  // Create 2 datasets
+  var data1 = [
+    {ser1: 0.3, ser2: 4},
+    {ser1: 2, ser2: 16},
+    {ser1: 3, ser2: 8}
+  ];
 
   var data2 = [
    {ser1: 1, ser2: 7},
@@ -131,6 +100,7 @@
 
   // At the beginning, I run the update function on the first dataset:
   update(data1)
+
 
 </script>
 </body>
