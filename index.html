@@ -7,7 +7,7 @@
 <body>
 <h1>jialinh4's Narrative Visualization</h1>
 <p>CS 416 Final Project</p>
-<p>test 0</p>
+<p>test 10</p>
 
 
 </body>
@@ -114,12 +114,12 @@
         // recover coordinate we need
         var x0 = x.invert(d3.mouse(this)[0]);
         var i = bisect(data, x0, 1);
-        selectedData = d3.timeFormat("%B %d, %Y")(data[i])
+        selectedData = data[i]
         focus
           .attr("cx", x(selectedData.date))
           .attr("cy", y(selectedData.value))
         focusText
-          .html("Exact value:" + selectedData.value + "  -  " + "Exact date:" + selectedData.date)
+          .html("Exact value:" + selectedData.value + "  -  " + "Exact date:" + d3.timeFormat("%B %d, %Y")(selectedData.date))
           .attr("x", x(selectedData.date)+15)
           .attr("y", y(selectedData.value))
         }
