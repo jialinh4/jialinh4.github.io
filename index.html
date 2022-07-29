@@ -27,8 +27,8 @@
   // append the svg object to the body of the page
   var svg = d3.select("#my_dataviz")
     .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", width + margin.left + margin.right + 300)
+      .attr("height", height + margin.top + margin.bottom + 200)
     .append("g")
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
@@ -114,7 +114,7 @@
         // recover coordinate we need
         var x0 = x.invert(d3.mouse(this)[0]);
         var i = bisect(data, x0, 1);
-        selectedData = data[i]
+        selectedData = d3.timeFormat("%B %d, %Y")(data[i])
         focus
           .attr("cx", x(selectedData.date))
           .attr("cy", y(selectedData.value))
