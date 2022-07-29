@@ -108,7 +108,7 @@
       svg
         .append("g")
         .selectAll("dot")
-        .data([new Date(2020-03-12)])
+        .data([d3.timeParse("%Y-%m-%d")([new Date(2020-03-12), new Date(2020-12-12)])])
         .enter()
         .append("circle")
           .attr("class", "myCircle")
