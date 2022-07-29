@@ -108,7 +108,7 @@
       svg
         .append("g")
         .selectAll("dot")
-        .data(data)
+        .data([new Date(2020-03-12)])
         .enter()
         .append("circle")
           .attr("class", "myCircle")
@@ -116,7 +116,7 @@
           .attr("cy", function(d) { return y(d.value) } )
           .attr("r", 1)
           .attr("stroke", "#69b3a2")
-          .attr("stroke-width", 1)
+          .attr("stroke-width", 3)
           .attr("fill", "white")
           .on("mouseover", mouseover)
           .on("mousemove", mousemove)
