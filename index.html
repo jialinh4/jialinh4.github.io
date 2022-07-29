@@ -7,7 +7,7 @@
 <body>
 <h1>jialinh4's Narrative Visualization</h1>
 <p>CS 416 Final Project</p>
-<p>test 7</p>
+<p>test 8</p>
 
 
 </body>
@@ -55,13 +55,13 @@
   function update1(data) {
 
     // Create the X axis:
-    x.domain([0, d3.max(data, function(d) { return d.cases }) ]);
+    x.domain([0, d3.max(data, function(d) { return d3.timeParse("%Y-%m-%d")(d.date) }) ]);
     svg.selectAll(".myXaxis").transition()
       .duration(3000)
       .call(xAxis);
 
     // create the Y axis
-    y.domain([0, d3.max(data, function(d) { return d.deaths }) ]);
+    y.domain([0, d3.max(data, function(d) { return d.cases }) ]);
     svg.selectAll(".myYaxis")
       .transition()
       .duration(3000)
@@ -80,8 +80,8 @@
       .transition()
       .duration(3000)
       .attr("d", d3.line()
-        .x(function(d) { return x(d.cases); })
-        .y(function(d) { return y(d.deaths); }))
+        .x(function(d) { return x(d3.timeParse("%Y-%m-%d")(d.date)); })
+        .y(function(d) { return y(d.cases); }))
         .attr("fill", "none")
         .attr("stroke", "steelblue")
         .attr("stroke-width", 2.5)
