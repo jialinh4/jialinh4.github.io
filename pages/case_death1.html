@@ -45,14 +45,14 @@
   
     // When reading the csv, I must format variables:
     function(d){
-      return { date : d3.timeParse("%Y-%m-%d")(d.date), valueA : d.cases, valueB : d.deaths }
+      return { date : d3.timeParse("%Y-%m-%d")(d.date), cases : d.cases, deaths : d.deaths }
     },
   
     // Now I can use this dataset:
     function(data) {
   
       // List of groups (here I have one group per column)
-      var allGroup = ["valueA", "valueB"]
+      var allGroup = ["cases", "deaths"]
 
       // add the options to the button
       d3.select("#selectButton")
@@ -78,7 +78,7 @@
   
       // Add Y axis
       var y = d3.scaleLinear()
-        .domain([0, d3.max(data, function(d) { return + d.valueA; })])
+        .domain([0, d3.max(data, function(d) { return + d.cases; })])
         .range([ height, 0 ]);
       svg.append("g")
         .call(d3.axisLeft(y));
@@ -89,11 +89,11 @@
         .append("path")
         .datum(data)
         .attr("fill", "none")
-        .attr("stroke", function(d){ return myColor("valueA") })
+        .attr("stroke", function(d){ return myColor("cases") })
         .attr("stroke-width", 5)
         .attr("d", d3.line()
           .x(function(d) { return x(d.date) })
-          .y(function(d) { return y(d.valueA) })
+          .y(function(d) { return y(d.cases) })
           )
 
       // A function that update the chart
