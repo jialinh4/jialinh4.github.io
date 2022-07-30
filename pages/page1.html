@@ -92,6 +92,7 @@
 
       // create a tooltip
       var Tooltip = d3.select("#my_dataviz")
+      .append('g')
         .append("div")
         .style("opacity", 0)
         .attr("class", "tooltip")
