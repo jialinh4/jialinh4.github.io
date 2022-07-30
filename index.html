@@ -41,6 +41,8 @@
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
   
+  //======================================================================================//
+
   //Read the data
 
   var data1 = d3.csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv",
@@ -63,7 +65,7 @@
   
       // Add Y axis
       var y = d3.scaleLinear()
-        .domain([0, d3.max(data, function(d) { return + d.value; })])
+        .domain([0, d3.max(data, function(d) { return + d.valueA; })])
         .range([ height, 0 ]);
       svg.append("g")
         .call(d3.axisLeft(y));
