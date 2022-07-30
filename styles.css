@@ -2,12 +2,3 @@ body {
     margin: 0;
     text-align: center;
 }
-
-p {
-    display: block;
-    margin-top: 2em;
-    margin-bottom: 3em;
-    margin-left: 0;
-    margin-right: 0;
-    width: 1000px;
-  }
