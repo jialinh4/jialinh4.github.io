@@ -58,6 +58,14 @@
       svg.append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x));
+
+      // Add Lable for X axis
+      svg.append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", width)
+        .attr("y", height - 6)
+        .text("Confirmed cases");        
   
       // Add Y axis
       var y = d3.scaleLinear()
@@ -65,6 +73,15 @@
         .range([ height, 0 ]);
       svg.append("g")
         .call(d3.axisLeft(y));
+
+      // Add Lable for Y axis
+      svg.append("text")
+        .attr("class", "y label")
+        .attr("text-anchor", "end")
+        .attr("y", 6)
+        .attr("dy", ".75em")
+        .attr("transform", "rotate(-90)")
+        .text("Confirmed deaths");        
 
       // This allows to find the closest X index of the mouse:
       var bisect = d3.bisector(function(d) { return d.cases; }).left;
