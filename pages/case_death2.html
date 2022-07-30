@@ -122,7 +122,7 @@
       }
       var mousemove = function(d) {
         Tooltip
-          .html("Cases: " + d.cases + ", Deaths: " + d.deaths)
+          .html("Cases: " + d.cases + ", Deaths: " + d.deaths + ", Date: " + d3.timeFormat("%B %d, %Y")(d.date))
           .style("left", (d3.mouse(this)[0]+100) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
 
@@ -161,7 +161,10 @@
   
 </script>
 
-<p>Text 4</p>
+<p>
+  Trough this chart, we can see the line plotted for the comfirmed cases over the deaths.
+  We can move the mouse over each point on the chart to see the details in order to calculate the rate.
+</p>
 
 </body>
 
