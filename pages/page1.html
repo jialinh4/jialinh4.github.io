@@ -110,8 +110,8 @@
       var mousemove = function(d) {
         Tooltip
           .html("Value: " + d.value + ", Date: " + d3.timeFormat("%B %d, %Y")(d.date))
-          .attr("x", x(selectedData.date)+15)
-          .attr("y", y(selectedData.value))
+          .style("left", (d3.mouse(this)[0]+100) + "px")
+          .style("top", (d3.mouse(this)[1]) + "px")
 
         var x0 = x.invert(d3.mouse(this)[0]);
         var i = bisect(data, x0, 1);
