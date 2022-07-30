@@ -7,7 +7,7 @@
 <body>
 <h1>jialinh4's Narrative Visualization</h1>
 <p>CS 416 Final Project</p>
-<p>test 9</p>
+<p>test 2</p>
 
 </body>
 <script src="https://d3js.org/d3.v4.js"></script>
@@ -103,7 +103,7 @@
       }
       var mousemove = function(d) {
         Tooltip
-          .html("Value: " + d.value + ", Date: " + d3.timeFormat("%B %d, %Y")(d.date))
+          .html("Cases: " + d.valueA + ", Deaths: " + d.valueB +", Date: " + d3.timeFormat("%B %d, %Y")(d.date))
           .style("left", (d3.mouse(this)[0]+70) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
       }
@@ -121,7 +121,7 @@
         .append("circle")
           .attr("class", "myCircle")
           .attr("cx", function(d) { return x(d.date) } )
-          .attr("cy", function(d) { return y(d.value) } )
+          .attr("cy", function(d) { return y(d.valueA) } )
           .attr("r", 1)
           .attr("stroke", "#69b3a2")
           .attr("stroke-width", 3)
