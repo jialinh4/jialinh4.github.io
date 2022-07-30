@@ -4,5 +4,5 @@ body {
 }
 
 #citations {
-    bottom: 100px;
+    vertical-align: baseline;
 }
