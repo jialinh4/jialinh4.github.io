@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <html>
-<head>
-    <link rel="stylesheet" href="../styles.css">
-</head>   
+  
 <body>
 <h1>jialinh4's Narrative Visualization</h1>
 <p>CS 416 Final Project</p>
@@ -27,10 +25,10 @@
 <script>
 
   // set the dimensions and margins of the graph
-  var margin = {top: 10, right: 30, bottom: 30, left: 60},
-      width = 460 - margin.left - margin.right,
-      height = 400 - margin.top - margin.bottom;
-  
+  var margin = {top: 100, right: 30, bottom: 30, left: 60},
+      width = 900 - margin.left - margin.right,
+      height = 600 - margin.top - margin.bottom;
+
   // append the svg object to the body of the page
   var svg = d3.select("#my_dataviz")
     .append("svg")
