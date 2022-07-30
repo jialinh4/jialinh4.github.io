@@ -27,9 +27,9 @@
 <script>
 
   // set the dimensions and margins of the graph
-  var margin = {top: 100, right: 30, bottom: 30, left: 60},
-      width = 900 - margin.left - margin.right,
-      height = 600 - margin.top - margin.bottom;
+  var margin = {top: 10, right: 30, bottom: 30, left: 60},
+      width = 460 - margin.left - margin.right,
+      height = 400 - margin.top - margin.bottom;
   
   // append the svg object to the body of the page
   var svg = d3.select("#my_dataviz")
@@ -108,7 +108,7 @@
         Tooltip
           .html("Value: " + d.value + ", Date: " + d3.timeFormat("%B %d, %Y")(d.date))
           .style("left", (d3.mouse(this)[0]+100) + "px")
-          .style("top", (d3.mouse(this)[1]+100) + "px")
+          .style("top", (d3.mouse(this)[1]) + "px")
 
         var x0 = x.invert(d3.mouse(this)[0]);
         var i = bisect(data, x0, 1);
