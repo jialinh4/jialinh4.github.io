@@ -90,7 +90,7 @@
         .datum(data)
         .attr("fill", "none")
         .attr("stroke", function(d){ return myColor("valueA") })
-        .attr("stroke-width", 1.5)
+        .attr("stroke-width", 3)
         .attr("d", d3.line()
           .x(function(d) { return x(d.date) })
           .y(function(d) { return y(d.valueA) })
