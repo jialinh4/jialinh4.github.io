@@ -16,6 +16,8 @@
 
 <script src="https://d3js.org/d3.v4.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/2.5.1/d3-annotation.min.js" integrity="sha512-iBAeBWWWFb8HqSBcrqcz98iIpuVH1la39dEYHtyQ/pGpeCQTQVvLJOWAuhv2Q7JSHp9k7hWA7sGxU3hHJe+tFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
 
@@ -162,31 +164,58 @@
   
   })
 
-      const annotations = [
-      {
-        note: {
-          label: "Here is the annotation label",
-          title: "Annotation title"
-        },
-        type: d3.annotationCalloutCircle,
-        subject: {
-          radius: 20,         // circle radius
-          radiusPadding: 20   // white space around circle befor connector
-        },
-        color: ["red"],
-        x: 40,
-        y: 160,
-        dy: 70,
-        dx: 70
-      }
-    ]
+  const annotationsLeft = [
+  {
+    note: {
+      label: "The death rate is 0.01286",
+      title: "Death rate 1"
+    },
+    type: d3.annotationCalloutCircle,
+    subject: {
+      radius: 70,         // circle radius
+      radiusPadding: 5   // white space around circle befor connector
+    },
+    color: ["red"],
+    x: 230,
+    y: 420,
+    dy: 70,
+    dx: 100
+    }
+  ]
 
-      // Add annotation to the chart
-      const makeAnnotations = d3.annotation()
-        .annotations(annotations)
-      d3.select("#example4")
-        .append("g")
-        .call(makeAnnotations)
+  // Add annotation to the chart
+  const makeAnnotationsLeft = d3.annotation()
+    .annotations(annotationsLeft)
+  d3.select("svg")
+    .append("g")
+    .call(makeAnnotationsLeft)
+  
+
+  const annotationsRight = [
+  {
+    note: {
+      label: "The death rate is 0.002762",
+      title: "Death rate 2"
+    },
+    type: d3.annotationCalloutCircle,
+    subject: {
+      radius: 70,         // circle radius
+      radiusPadding: 5   // white space around circle befor connector
+    },
+    color: ["blue"],
+    x: 630,
+    y: 180,
+    dy: 70,
+    dx: 100
+    }
+  ]
+
+  // Add annotation to the chart
+  const makeAnnotationsRight = d3.annotation()
+    .annotations(annotationsRight)
+  d3.select("svg")
+    .append("g")
+    .call(makeAnnotationsRight)
   
 </script>
 
