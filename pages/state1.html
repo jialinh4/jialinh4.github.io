@@ -19,61 +19,52 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/2.5.1/d3-annotation.min.js" integrity="sha512-iBAeBWWWFb8HqSBcrqcz98iIpuVH1la39dEYHtyQ/pGpeCQTQVvLJOWAuhv2Q7JSHp9k7hWA7sGxU3hHJe+tFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+<div id="state1"></div>
 
-<!-- Initialize a select button -->
 <select id="selectButton"></select>
 
-<!-- Color Scale -->
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+<!----------------------------------------------------------------->
 
 <script>
 
-  // set the dimensions and margins of the graph
+  // Set the dimensions 
   var margin = {top: 100, right: 30, bottom: 30, left: 60},
       width = 900 - margin.left - margin.right,
       height = 600 - margin.top - margin.bottom;
-  
-  // append the svg object to the body of the page
-  var svg = d3.select("#my_dataviz")
+
+  var svg = d3.select("#state1")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
-  
-  //Read the data
 
   var data1 = d3.csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv",
-  
-    // When reading the csv, I must format variables:
+
     function(d){
       return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.cases, state : d.state }
     },
-  
-    // Now I can use this dataset:
+
     function(data) {
-      
-      // List of groups (here I have one group per column)
+
       var allGroup = d3.map(data, function(d){return(d.state)}).keys()
 
-      // add the options to the button
       d3.select("#selectButton")
         .selectAll('myOptions')
         .data(allGroup)
         .enter()
         .append('option')
-        .text(function (d) { return d; }) // text showed in the menu
-        .attr("value", function (d) { return d; }) // corresponding value returned by the button
+        .text(function (d) { return d; }) 
+        .attr("value", function (d) { return d; }) 
 
-      // A color scale: one color for each group
       var myColor = d3.scaleOrdinal()
         .domain(allGroup)
         .range(d3.schemeSet2);
   
-      // Add X axis --> it is a date format
+      // Add X axis
       var x = d3.scaleTime()
         .domain(d3.extent(data, function(d) { return d.date; }))
         .range([ 0, width ]);
@@ -117,13 +108,12 @@
           .x(function(d) { return x(d.date) })
           .y(function(d) { return y(d.value) })
           )
-      // A function that update the chart
+
+      // Update function
       function update(selectedGroup) {
 
-      // Create new data with the selection?
       var dataFilter = data.filter(function(d){return d.state==selectedGroup})
 
-      // Give these new data to update line
       line
           .datum(dataFilter)
           .transition()
@@ -135,11 +125,8 @@
           .attr("stroke", function(d){ return myColor(selectedGroup) })
       }
 
-      // When the button is changed, run the updateChart function
       d3.select("#selectButton").on("change", function(d) {
-        // recover the option that has been chosen
         var selectedOption = d3.select(this).property("value")
-        // run the updateChart function with this selected option
         update(selectedOption)
       })
   
@@ -149,7 +136,8 @@
 
 <p>
   <br>
-  Trough this chart, we can see the change of confirmed cases in each state overtime.
+  Trough this chart, we can see the change of confirmed cases in each state overtime.<br>
+  Select the option box to see the chart for each state.
 </p>
 
 </body>

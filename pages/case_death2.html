@@ -18,45 +18,40 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/2.5.1/d3-annotation.min.js" integrity="sha512-iBAeBWWWFb8HqSBcrqcz98iIpuVH1la39dEYHtyQ/pGpeCQTQVvLJOWAuhv2Q7JSHp9k7hWA7sGxU3hHJe+tFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+<div id="case_death2"></div>
 
-<!-- Circle are black when hovered-->
 <style>
   .myCircle:hover {
     stroke: red;
   }
 </style>
 
+<!----------------------------------------------------------------->
+
 <script>
 
-  // set the dimensions and margins of the graph
+  // Set the dimensions
   var margin = {top: 100, right: 30, bottom: 30, left: 60},
       width = 900 - margin.left - margin.right,
       height = 600 - margin.top - margin.bottom;
 
-  // append the svg object to the body of the page
-  var svg = d3.select("#my_dataviz")
+  var svg = d3.select("#case_death2")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
-  
-  //Read the data
 
   var data1 = d3.csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv",
-  
-    // When reading the csv, I must format variables:
+
     function(d){
       return { cases : d.cases, deaths : d.deaths, date : d3.timeParse("%Y-%m-%d")(d.date) }
     },
-  
-    // Now I can use this dataset:
+
     function(data) {
   
-      // Add X axis --> it is a date format
+      // Add X axis
       var x = d3.scaleLinear()
         .domain([0, d3.max(data, function(d) { return + d.cases; })])
         .range([ 0, width ]);
@@ -88,10 +83,8 @@
         .attr("transform", "rotate(-90)")
         .text("Confirmed deaths");        
 
-      // This allows to find the closest X index of the mouse:
       var bisect = d3.bisector(function(d) { return d.cases; }).left;
 
-      // Create the circle that travels along the curve of chart
       var focus = svg
         .append('g')
         .append('circle')
@@ -111,8 +104,8 @@
           .y(function(d) { return y(d.deaths) })
           )
 
-      // create a tooltip
-      var Tooltip = d3.select("#my_dataviz")
+      // Add a tooltip
+      var Tooltip = d3.select("#case_death2")
         .append("div")
         .style("opacity", 0)
         .attr("class", "tooltip")
@@ -120,7 +113,6 @@
         .style("border", "solid")
         .style("border-width", "2px")
 
-      // Three function that change the tooltip when user hover / move / leave a cell
       var mouseover = function(d) {
         Tooltip.style("opacity", 1)
         focus.style("opacity", 1)
@@ -179,7 +171,6 @@
     }
   ]
 
-  // Add annotation to the chart
   const makeAnnotationsLeft = d3.annotation()
     .annotations(annotationsLeft)
   d3.select("svg")
@@ -202,7 +193,6 @@
     }
   ]
 
-  // Add annotation to the chart
   const makeAnnotationsRight = d3.annotation()
     .annotations(annotationsRight)
   d3.select("svg")
