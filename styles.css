@@ -2,3 +2,7 @@ body {
     margin: 0;
     text-align: center;
 }
+
+#paragraph1 {
+    text-align: left;
+}
