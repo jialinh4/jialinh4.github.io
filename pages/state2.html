@@ -50,18 +50,18 @@
 
     function(data) {
 
-      var allGroup = d3.map(data, function(d){return(d.state)}).keys()
+      var seletionGroup = d3.map(data, function(d){return(d.state)}).keys()
 
       d3.select("#selectButton")
         .selectAll('myOptions')
-        .data(allGroup)
+        .data(seletionGroup)
         .enter()
         .append('option')
         .text(function (d) { return d; }) 
         .attr("value", function (d) { return d; }) 
 
       var myColor = d3.scaleOrdinal()
-        .domain(allGroup)
+        .domain(seletionGroup)
         .range(d3.schemeSet2);
   
       // Add X axis
@@ -100,7 +100,7 @@
       var line = svg
         .append('g')
         .append("path")
-        .datum(data.filter(function(d){return d.state==allGroup[0]}))
+        .datum(data.filter(function(d){return d.state==seletionGroup[0]}))
         .attr("fill", "none")
         .attr("stroke", function(d){ return myColor("valueA") })
         .attr("stroke-width", 5)
@@ -110,24 +110,24 @@
           )
 
       // Update function
-      function update(selectedGroup) {
+      function update(selectedOption) {
 
-      var dataFilter = data.filter(function(d){return d.state==selectedGroup})
+      var newData = data.filter(function(d){return d.state==selectedOption})
 
       line
-          .datum(dataFilter)
+          .datum(newData)
           .transition()
           .duration(1000)
           .attr("d", d3.line()
             .x(function(d) { return x(+d.date) })
             .y(function(d) { return y(+d.value) })
           )
-          .attr("stroke", function(d){ return myColor(selectedGroup) })
+          .attr("stroke", function(d){ return myColor(selectedOption) })
       }
 
       d3.select("#selectButton").on("change", function(d) {
-        var selectedOption = d3.select(this).property("value")
-        update(selectedOption)
+        var newOption = d3.select(this).property("value")
+        update(newOption)
       })
   
 })
