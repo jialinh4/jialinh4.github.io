@@ -6,3 +6,7 @@ body {
 #paragraph1 {
     text-align: left;
 }
+
+form {
+    margin-top: 10px;
+}
