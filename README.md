@@ -21,7 +21,7 @@ To run this project locally, you will need a modern web browser and a code edito
 1. Clone this repository to your local machine.
 
 ```bash
-git clone https://github.com/yourusername/resume-website.git
+git clone https://github.com/jialinh4/jialinh4.github.io.git
 ```
 
 2. Open the index.html file in your web browser.
