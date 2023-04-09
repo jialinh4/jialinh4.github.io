@@ -1,59 +1,93 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-      .center {
-        margin: auto;
-        width: 40%;
-        padding: 10px;
-      }
-      </style>
-</head>   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JiaLin He - Resume</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-<h1>jialinh4's Narrative Visualization for COVID-19</h1>
+    <header>
+        <h1>JiaLin He</h1>
+        <p>711 S Fourth Street Apt 606, Champaign, IL | 2179799896 | HeJialinBusiness@gmail.com</p>
+    </header>
+    
+    <main>
+        <section id="education">
+            <h2>Education</h2>
+            <h3>University of Illinois at Urbana-Champaign</h3>
+            <p>Expected Graduation: May 2024</p>
+            <p>Bachelor of Science in Computer Science</p>
+            <p>Champaign, IL</p>
+            <p>James Scholar Honors: 2021 Spring - 2022 Spring</p>
+        </section>
+        <section id="experience">
+            <h2>Experience & Involvement</h2>
+            <article>
+                <h3>RoboMaster Competition in North America</h3>
+                <p>Vision development group member</p>
+                <p>August 2022 - Present | Champaign, IL</p>
+                <ul>
+                    <li>Worked with a team of three to improve AI recognition algorithm.</li>
+                    <li>Reviewed using Python for Machine Learning and trained machines with models.</li>
+                    <li>Achieved the third place in RoboMaster Competition 2022.</li>
+                </ul>
+            </article>
+            <article>
+                <h3>RADWEAR Research Project</h3>
+                <p>Research Team Member</p>
+                <p>January 2023 – Present | Champaign, IL</p>
+                <ul>
+                    <li>Assigned to the Data Collection group for collecting the research data from the participants.</li>
+                    <li>Upgraded the recording program for data acquisition using Python on Vizard 3.5.</li>
+                    <li>Enhanced the synchronization of devices such as EEG and EMG in hardware side.</li>
+                </ul>
+            </article>
+            <article>
+                <h3>Website Development Project</h3>
+                <p>Website Designer</p>
+                <p>July 2021 - January 2021 | Champaign, IL</p>
+                <ul>
+                    <li>Established the Tech Department and launched the first official website.</li>
+                    <li>Participated in the implementation of the front-end website using React.</li>
+                </ul>
+            </article>
+            <article>
+                <h3>Network Architecture and Data Science Internship</h3>
+                <p>Tech Group Member</p>
+                <p>April 2021 - September 2021 | Beijing, China</p>
+                <ul>
+                    <li>Explored and researched in topological properties and metrics of complex networks.</li>
+                    <li>Programmed in Python for network virtualization and network community detection.</li>
+                    <li>Designed and conducted analysis on large networks.</li>
+                    <li>Published the paper on IEEE CPS and submitted for index in IEEE Xplore, EI compendex.</li>
+                </ul>
+            </article>
+        </section>
+        <section id="awards">
+            <h2>Awards</h2>
+            <ul>
+                <li>RoboMaster 2022 University AI Challenge: Second Prize (2022)</li>
+                <li>First Robotics Competition: Innovation in Control Award (2019)</li>
+                <li>Computational and Algorithmic Thinking: Outstanding Award (2018)</li>
+            </ul>
+        </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <h3>Technical Skills</h3>
+            <p>Java, Python, C++, C language, MATLAB, Unreal Engine</p>
+            <h3>Languages</h3>
+            <p>Mandarin (Native), English (Full Professional)</p>
+        </section>
+    </main>    
 
-<p>Main page</p>
+    <footer>
+        <a href="Resume-2023.pdf" download="JiaLin_He_Resume">Download Resume as PDF</a>
+    </footer>
+    <script src="main.js"></script>
 
-<form>
-  <button formaction="index.html">Main Page</button>
-  <button formaction="pages/case_death1.html"> 1 </button>
-  <button formaction="pages/state1.html"> 2 </button>
-  <button formaction="pages/state2.html"> 3 </button>
-  <button formaction="pages/case_death2.html"> 4 </button>
-</form>
-
-<div class="center">
-  <p id="paragraph1">
-    &nbsp;&nbsp;&nbsp;&nbsp;Coronavirus disease 2019 (COVID-19) is a contagious disease caused by a virus, 
-    the severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). 
-    The first known case was identified in Wuhan, China, in December 2019. 
-    The disease quickly spread worldwide, resulting in the COVID-19 pandemic.
-    <br>
-    <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;COVID-19 transmits when people breathe air contaminated by droplets and small airborne particles containing the virus. 
-    The risk of breathing these is highest when people are in close proximity, 
-    but they can be inhaled over longer distances, particularly indoors. 
-    Transmission can also occur if splashed or sprayed with contaminated fluids in the eyes, 
-    nose or mouth, and, rarely, via contaminated surfaces. People remain contagious for up to 20 days, 
-    and can spread the virus even if they do not develop symptoms.
-    <br>
-    <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;To further study whether there is an association between confirmed cases and deaths for COVID-19; 
-    if so, what the relationship between confirmed cases and deaths will be (linear or otherwise); 
-    and whether the gradient for confirmed cases and deaths is constant over time. 
-    This website will visualize the data with some charts and present the detailed information in the Interactive Slideshow way.
-    <br>
-    <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;To get started, click to see <a href="pages/case_death1.html">charts for cases and deaths</a>.
-  </p>
-</div>
-
-<p id="citations">
-  <br>
-  Dataset: <a href="https://github.com/nytimes/covid-19-data.git">https://github.com/nytimes/covid-19-data.git</a>.
-</p>
+    <button id="back-to-top" title="Back to top">&uarr;</button>
+    <script src="main.js"></script>
 
 </body>
 </html>
