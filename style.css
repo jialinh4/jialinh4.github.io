@@ -181,8 +181,8 @@ form textarea {
 }
 
 .profile-image img {
-    max-width: 50%;
-    height: auto;
+    max-width: 900px;
+    height: 600px;
 }
 
 .profile-text {
