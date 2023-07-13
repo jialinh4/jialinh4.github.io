@@ -3,91 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JiaLin He - Resume</title>
+    <title>JiaLin He - Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>JiaLin He</h1>
-        <p>711 S Fourth Street Apt 606, Champaign, IL | 2179799896 | HeJialinBusiness@gmail.com</p>
+        <h1>Welcome to My Portfolio</h1>
     </header>
-    
-    <main>
-        <section id="education">
-            <h2>Education</h2>
-            <h3>University of Illinois at Urbana-Champaign</h3>
-            <p>Expected Graduation: May 2024</p>
-            <p>Bachelor of Science in Computer Science</p>
-            <p>Champaign, IL</p>
-            <p>James Scholar Honors: 2021 Spring - 2022 Spring</p>
-        </section>
-        <section id="experience">
-            <h2>Experience & Involvement</h2>
-            <article>
-                <h3>RoboMaster Competition in North America</h3>
-                <p>Vision development group member</p>
-                <p>August 2022 - Present | Champaign, IL</p>
-                <ul>
-                    <li>Worked with a team to improve AI algorithm for recognition and detection of objects.</li>
-                    <li>Developed the Python model for Machine Learning.</li>
-                    <li>Implemented Kalman Filter for better performance in tracking the moving robots.</li>
-                    <li>Achieved the third place in RoboMaster Competition 2022.</li>
-                </ul>
-            </article>
-            <article>
-                <h3>RADWEAR Research Project</h3>
-                <p>Research Team Member</p>
-                <p>January 2023 – Present | Champaign, IL</p>
-                <ul>
-                    <li>Collected the research data from the participants in Anxiety Detection Group.</li>
-                    <li>Upgraded the recording program for data acquisition using Python on Vizard 3.5.</li>
-                    <li>Enhanced the synchronization of devices such as EEG and EMG.</li>
-                </ul>
-            </article>
-            <article>
-                <h3>Tree House Academia Internships</h3>
-                <p>Website Developer</p>
-                <p>July 2021 - January 2021 | Champaign, IL</p>
-                <ul>
-                    <li>Established the platform for our organization and launched the first official website.</li>
-                    <li>Participated in the application of the front-end website using React.</li>
-                </ul>
-            </article>
-            <article>
-                <h3>Network Architecture and Data Science Internship</h3>
-                <p>Tech Group Member</p>
-                <p>April 2021 - September 2021 | Beijing, China</p>
-                <ul>
-                    <li>Explored and researched in topological properties and metrics of complex networks.</li>
-                    <li>Programmed in Python for network virtualization and network community detection.</li>
-                    <li>Published the paper on IEEE CPS and submitted for index in IEEE Xplore, EI compendex.</li>
-                </ul>
-            </article>
-        </section>
-        <section id="awards">
-            <h2>Awards</h2>
-            <ul>
-                <li>RoboMaster 2022 University AI Challenge: Second Prize (2022)</li>
-                <li>First Robotics Competition: Innovation in Control Award (2019)</li>
-                <li>Computational and Algorithmic Thinking: Outstanding Award (2018)</li>
-            </ul>
-        </section>
-        <section id="skills">
-            <h2>Skills</h2>
-            <h3>Technical Skills</h3>
-            <p>Java, Python, C++, C language, MATLAB, Unreal Engine</p>
-            <h3>Languages</h3>
-            <p>Mandarin (Native), English (Full Professional)</p>
-        </section>
-    </main>    
 
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/about.html">About</a></li>
+            <li><a href="pages/projects.html">Projects</a></li>
+            <li><a href="pages/resume.html">Resume</a></li>
+            <li><a href="pages/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- <div class="spacer"></div> -->
+
+    <main>
+        <div class="profile-container">
+            <div class="profile-text">
+                <h2>About Me</h2>
+                <p>Hello, my name is JiaLin He. I'm a Computer Science student at the University of Illinois at Urbana-Champaign, expected to graduate in May 2024. I have a passion for AI and Machine Learning and have contributed to various projects and competitions in these fields. Feel free to browse my website to learn more about my work and experience!</p>
+                <p>If you're interested in my work, have any questions, or would like to connect, please don't hesitate to <a href="pages/contact.html">contact me</a>.</p>
+            </div>
+            <div class="profile-image">
+                <img src="img/Profile_img.jpg" alt="JiaLin He" />
+            </div>
+        </div>
+    </main>
+    
     <footer>
-        <a href="Resume.pdf" download="JiaLin_He_Resume">Download Resume as PDF</a>
+        <p>&copy; 2023 JiaLin He. All rights reserved.</p>
     </footer>
-    <script src="main.js"></script>
 
     <button id="back-to-top" title="Back to top">&uarr;</button>
-    <script src="main.js"></script>
+    <script src="utils/main.js"></script>
 
 </body>
 </html>
