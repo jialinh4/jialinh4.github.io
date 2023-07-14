@@ -14,7 +14,6 @@ html {
     overflow-y: scroll;
 }
 
-
 /* Header */
 header {
     background-color: #333;
@@ -55,6 +54,12 @@ nav ul li a:hover {
 main {
     flex: 1 0 auto;
     padding: 1rem;
+}
+
+/* Specific Main Content for About Page */
+.about-page {
+    padding: 1rem 15%; /* Increase padding on the left and right */
+    font-size: 20px; /* Increase font size */
 }
 
 h2 {
@@ -102,7 +107,7 @@ footer a:hover {
 #back-to-top {
     display: none;
     position: fixed;
-    bottom: 60px;
+    bottom: 100px;
     right: 20px;
     background-color: #333;
     color: #fff;
@@ -165,12 +170,6 @@ form textarea {
     resize: none; /* prevents users from resizing the textarea */
 }
 
-
-/* Spacer */
-.spacer {
-    flex-grow: 1;
-}
-
 /* Profile */
 .profile-container {
     display: flex;
@@ -190,10 +189,47 @@ form textarea {
 }
 
 .profile-text p {
-    font-size: 18px; /* adjust the font size of paragraphs */
+    font-size: 24px; /* adjust the font size of paragraphs */
 }
 
 .profile-text h2 {
-    font-size: 24px; /* adjust the font size of h2 headers */
+    font-size: 32px; /* adjust the font size of h2 headers */
+}
+
+/* Project grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* creates 2 equal-width columns */
+    gap: 60px;
+    padding: 0 60px; /* This will add 50px padding to the left and right of the grid */
+}
+
+.grid-item {
+    flex: 1 0 50%; /* Each cell will take up at least 200px, and will grow to take up remaining space */
+    border: 1px solid #333; /* Border around each cell */
+    padding: 20px; /* Space between cell border and content */
+    background-color: #f4f4f4; /* Background color for each cell */
+    border-radius: 15px; /* Rounded corners */
+    background-size: cover; /* To ensure the image covers the entire div */
+}
+
+.project-preview {
+    text-align: center; /* Center the text within each cell */
+}
+
+.project1 {
+    background-image: url('images/project1.jpg'); /* Change the path to match your actual file location */
+}
+
+.project2 {
+    background-image: url('images/project2.jpg'); /* Change the path to match your actual file location */
+}
+
+.project3 {
+    background-image: url('images/project3.jpg'); /* Change the path to match your actual file location */
+}
+
+.project4 {
+    background-image: url('images/project4.jpg'); /* Change the path to match your actual file location */
 }
 
